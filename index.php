@@ -10,6 +10,7 @@
     table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
+        margin-top: 10px;
     }
     th, td {
         padding: 5px;
@@ -30,7 +31,7 @@
 <body>
 
 <form action="" method="post">
-<div id="select">
+<div id="select" style="display: inline;">
 <select class="select" name="city">
   <option value="Jakarta">Jakarta</option>
   <option value="Tokyo">Tokyo</option>
@@ -48,7 +49,7 @@ if(!ini_get('date.timezone')) {
 $city = "Jakarta";
 if(isset($_POST)) {
     $city = $_POST['city'];
-    echo "City = " .$city;
+    //echo "City = " .$city;
 };
 
 $url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=$city&mode=json&units=metric&cnt=5&APPID=481e3bc28e5264e5607c2b65b449bfc1";
