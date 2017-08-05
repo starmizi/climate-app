@@ -30,16 +30,35 @@
         background-color: black;
         color: white;
     }
+    form {
+        margin: 10px;
+    }
+    input[type="submit"] {
+        width: 80px;
+    }
     </style>
 </head>
 <body>
 
 <form action="" method="post">
+<input type="submit" value="Input City" class="city" placeholder="Jakarta">
+<div id="input" style="display: inline;">
+<input type="text" name="cityInput">
+</div>
+</form>
+
+<form action="" method="post">
+<input type="submit" value="Select City" class="city">
 <div id="select" style="display: inline;">
-<select class="select" name="city">
+<select class="select" name="citySelect">
   
   <?php
-  $city = isset($_POST['city']) ? $_POST['city'] : 'Jakarta';
+  if ($_POST['cityInput'] || $_POST['citySelect']) {
+    $city = isset($_POST['cityInput']) ? $_POST['cityInput'] : $_POST['citySelect'];
+  }
+  else {
+    $city = 'Jakarta';
+  }
   $cityList = array("Jakarta", "Tokyo", "London");
 
   foreach ($cityList as $value) {
@@ -51,13 +70,13 @@
 
 </select>
 </div>
-<input type="submit" value="Select City">
 </form>
 
 <?php
 if(!ini_get('date.timezone')) {
     date_default_timezone_set('Asia/Jakarta');
 };
+$city = ucfirst(strtolower($city));
 $url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=$city&mode=json&units=metric&cnt=5&APPID=481e3bc28e5264e5607c2b65b449bfc1";
 $json = file_get_contents($url);
 $data = json_decode($json, true);
@@ -72,9 +91,9 @@ foreach ($data['list'] as $key => $value) {
     $temp = $value['temp']['day'];
     $variance = $value['temp']['max'] - $value['temp']['min'];
     echo "<tr>";
-    echo "<td>" .$date. "</td>";
-    echo "<td>" .$temp. " °C</td>";
-    echo "<td>" .$variance. " °C</td>";
+    echo "<td>$date</td>";
+    echo "<td>$temp °C</td>";
+    echo "<td>$variance °C</td>";
     echo "</tr>";
 }
 echo "</table>";
