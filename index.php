@@ -5,7 +5,7 @@
     <title>Climate App</title>
     <style>
     table {
-    width:100%;
+    width:30%;
     }
     table, th, td {
         border: 1px solid black;
@@ -42,7 +42,7 @@ $data = json_decode($json, true);
 //print_r($data);
 //var_dump($data);
 
-echo "<table>";
+echo "<table id='t01'>";
 echo "<tr>";
 echo "<th>$city</th>";
 echo "<th>Temperature</th>";
