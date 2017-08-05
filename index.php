@@ -9,7 +9,9 @@
 if(!ini_get('date.timezone')) {
     date_default_timezone_set('Asia/Jakarta');
 };
-$url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Jakarta&mode=json&units=metric&cnt=5&APPID=481e3bc28e5264e5607c2b65b449bfc1";
+
+$city = "Jakarta";
+$url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=$city&mode=json&units=metric&cnt=5&APPID=481e3bc28e5264e5607c2b65b449bfc1";
 $json = file_get_contents($url);
 $data = json_decode($json, true);
 
@@ -18,7 +20,7 @@ $data = json_decode($json, true);
 
 echo "<table>";
 echo "<tr>";
-echo "<th>Jakarta</th>";
+echo "<th>$city</th>";
 echo "<th>Temperature</th>";
 echo "<th>Variance</th>";
 foreach ($data['list'] as $key => $value) {
