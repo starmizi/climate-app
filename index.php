@@ -34,24 +34,30 @@
 </head>
 <body>
 
-<?php $city = isset($_POST['city']) ? $_POST['city'] : 'Jakarta'; ?>
-
 <form action="" method="post">
 <div id="select" style="display: inline;">
 <select class="select" name="city">
-  <option <?php if ($city == 'Jakarta') echo 'selected' ; ?>>Jakarta</option>
-  <option <?php if ($city == 'Tokyo') echo 'selected' ; ?>>Tokyo</option>
-  <option <?php if ($city == 'London') echo 'selected' ; ?>>London</option>
+  
+  <?php
+  $city = isset($_POST['city']) ? $_POST['city'] : 'Jakarta';
+  $cityList = array("Jakarta", "Tokyo", "London");
+
+  foreach ($cityList as $value) {
+    echo "<option ";
+    if ($city == $value) echo 'selected';
+    echo "> $value </option>";
+  }
+  ?>
+
 </select>
 </div>
-<input type="submit" value="Submit">
+<input type="submit" value="Select City">
 </form>
 
 <?php
 if(!ini_get('date.timezone')) {
     date_default_timezone_set('Asia/Jakarta');
 };
-
 $url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=$city&mode=json&units=metric&cnt=5&APPID=481e3bc28e5264e5607c2b65b449bfc1";
 $json = file_get_contents($url);
 $data = json_decode($json, true);
