@@ -5,16 +5,20 @@
     <title>Climate App</title>
     <style>
     table {
-    width:30%;
+    width:25%;
     }
     table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
         margin-top: 10px;
     }
-    th, td {
+    th {
         padding: 5px;
-        text-align: left;
+        text-align: center;
+    }
+    td {
+        padding: 5px;
+        text-align: right;
     }
     table#t01 tr:nth-child(even) {
         background-color: #eee;
