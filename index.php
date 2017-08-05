@@ -54,7 +54,7 @@
   
   <?php
   if ($_POST['cityInput'] || $_POST['citySelect']) {
-    $city = isset($_POST['cityInput']) ? $_POST['cityInput'] : $_POST['citySelect'];
+    $city = $_POST['cityInput'] ? $_POST['cityInput'] : $_POST['citySelect'];
   }
   else {
     $city = 'Jakarta';
