@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
-    <link rel="stylesheet" href="css/styleOL.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Climate App</title>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
