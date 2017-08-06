@@ -1,0 +1,57 @@
+table {
+    width:30%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th {
+    padding: 5px;
+    text-align: center;
+}
+td {
+    padding: 5px;
+    text-align: right;
+}
+table#t01 {
+    position: absolute;
+    bottom: 0.5em;
+    left: 0.5em;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th {
+    background-color: black;
+    color: white;
+}
+#inputCity {
+    position: absolute;
+    bottom: 12.5em;
+    left: 0.6em;
+}
+input[type="submit"] {
+    background-color: #000;
+    color: #fff;
+    border-style: none;
+    height: 25px;
+    width: 80px;
+}
+input[type="text"] {
+    height: 20px;
+    width: 120px;        
+}
+.map-title {
+    position: absolute;
+    bottom: 13em;
+    left: 0.6em;
+    z-index: 1;
+    text-align: left;
+    font-size: 1.1em;
+    color: white; text-shadow: 0 0 0.3em #000, 0 0 0.3em #000,
+    0 0 0.3em #000;
+}
