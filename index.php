@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
     <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title>Climate App</title>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="https://openlayers.org/en/v4.2.0/build/ol.js"></script>
+    <title>Climate App</title>
   </head>
   <body>
     <div id="map" class="map"></div>
@@ -29,8 +27,14 @@
     };
     $city = $_POST['cityInput'] ? $_POST['cityInput'] : 'Jakarta';
     $city = ucfirst(strtolower($city));
-    $url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=$city&mode=json&units=metric&cnt=5&APPID=481e3bc28e5264e5607c2b65b449bfc1";
-    $json = file_get_contents($url);
+    $url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=$city&mode=json&units=metric&cnt=5&APPID=5bac851e6cae07479be2c32adb636cb7";
+    if (file_get_contents($url) === false) {
+    	$url2 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=jakarta&mode=json&units=metric&cnt=5&APPID=5bac851e6cae07479be2c32adb636cb7";
+    	$city = $city." is not found";
+    } else {
+    	$url2 = $url;
+    }
+    $json = file_get_contents($url2);
     $data = json_decode($json, true);
     $lon = $data['city']['coord']['lon'];
     $lat = $data['city']['coord']['lat']; 
@@ -55,8 +59,7 @@
     <script>
       var cityLoc = ol.proj.fromLonLat([<?php echo "$lon, $lat"; ?>]);
       var iconFeature = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.transform([<?php echo "$lon, $lat"; ?>], 'EPSG:4326',     
-        'EPSG:3857'))
+        geometry: new ol.geom.Point(ol.proj.transform([<?php echo "$lon, $lat"; ?>], 'EPSG:4326', 'EPSG:3857'))
       });
     </script>
     <script src="js/fly2City.js"></script>

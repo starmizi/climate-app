@@ -1,13 +1,10 @@
-html, body {
+html, body, #map {
     height: 100%;
-    width: 100%;
+    overflow-y: hidden;
+}
+body {
     padding: 0;
     margin: 0;
-}
-.map {
-  width: 99.8%;
-  height: 99.7%;
-  border: 1px solid #000;
 }
 .map-title {
     position: absolute;
